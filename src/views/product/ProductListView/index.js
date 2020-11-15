@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Box,
   Container,
@@ -10,6 +10,7 @@ import Page from 'src/components/Page';
 import Toolbar from './Toolbar';
 import ProductCard from './ProductCard';
 import data from './data';
+import dataShare from '../../../utils/dataShare.service';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,6 +27,11 @@ const useStyles = makeStyles((theme) => ({
 const ProductList = () => {
   const classes = useStyles();
   const [products] = useState(data);
+
+  useEffect(() => {
+    console.log('This is dataShare in Products....',dataShare);
+    dataShare.getData();
+  }, [dataShare])
 
   return (
     <Page
