@@ -1,9 +1,9 @@
-import { Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
-const subject = new Subject();
+const subscriber = new BehaviorSubject(null);
 
 export const messageService = {
-    sendMessage: message => subject.next({ text: message }),
-    clearMessages: () => subject.next(),
-    getMessage: () => subject.asObservable()
+    sendMessage: message => subscriber.next({ text: message }),
+    clearMessages: () => subscriber.next(),
+    getMessage: () => subscriber.asObservable()
 };
